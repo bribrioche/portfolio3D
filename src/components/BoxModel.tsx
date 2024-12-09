@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
 // Shader pour un effet granuleux
 const granularShader = {
   uniforms: {
-    color: { value: new THREE.Color(0xffffff) }, // Couleur blanche par défaut
-    light: { value: new THREE.Vector3(-0.5, 1, 1) }, // Lumière directionnelle
-    ambientLight: { value: new THREE.Vector3(0.4, 0.4, 0.4) }, // Lumière ambiante douce
+    color: { value: new THREE.Color(0xffffff) },
+    light: { value: new THREE.Vector3(-0.5, 1, 1) },
+    ambientLight: { value: new THREE.Vector3(0.4, 0.4, 0.4) },
   },
   vertexShader: `
     varying vec3 vNormal;
@@ -45,6 +46,7 @@ const BoxModel: React.FC<{
   children?: React.ReactNode; 
 }> = ({ position = [0, 0, 0], children }) => {
   const { scene } = useGLTF('/models/box.glb');
+  const meshRef = useRef<THREE.Group>(null);
 
   // Appliquer le shader à chaque maillage du modèle
   scene.traverse((child) => {
@@ -53,11 +55,24 @@ const BoxModel: React.FC<{
     }
   });
 
+  useFrame(({ clock }) => {
+    const elapsedTime = clock.getElapsedTime();
+    if (meshRef.current) {
+        // Diminution de l'amplitude sur l'axe Y pour un effet plus subtil
+        meshRef.current.position.y = position[1] + Math.sin(elapsedTime) * 0.02;
+        // Rotation lente autour de l'axe Y pour un effet de mouvement subtil
+        meshRef.current.rotation.y = Math.PI + Math.sin(elapsedTime * 0.4) * 0.1;
+    }
+});
+
+
   return (
     <primitive 
+      ref={meshRef} // Référence pour le hook useFrame
       object={scene} 
       position={position} // Appliquer la position ici
       scale={[1, 1, 1]}
+      rotation={[0, Math.PI, 0]} // Rotation de 180° autour de l'axe Y
     >
       {children}
     </primitive>

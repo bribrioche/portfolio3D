@@ -1,0 +1,311 @@
+.overlay-container {
+  position: absolute;
+  top: -100%;
+  /* left: 50px; */
+  width: calc(100% - 100px);
+  height: calc(100% - 100px);
+  background-color: #ffffff00;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  transition: top 0.4s ease-in-out;
+  max-width: 1600px;
+  font-family: "Nunito Sans";
+  cursor: default;
+}
+
+.top {
+  width: 100%;
+  z-index: 3;
+}
+
+.overlay-container.visible {
+  top: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.overlay-container-2.visible {
+  top: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.overlay-tab {
+  position: absolute;
+  background-color: #cccccc;
+  color: rgb(15, 15, 15);
+  font-weight: bold;
+  font-size: 30px;
+  padding: 10px 100px;
+  border-radius: 20px 20px 0 0;
+}
+
+.overlay-tab-2 {
+  position: absolute;
+  background-color: #cccccc;
+  color: rgb(15, 15, 15);
+  font-weight: bold;
+  font-size: 30px;
+  padding: 10px 100px;
+  border-radius: 20px 20px 0 0;
+  left: 20%;
+}
+
+.overlay-close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: -10px;
+  right: 0px;
+  background-color: transparent;
+  color: rgb(15, 15, 15);
+  font-size: 20px;
+  cursor: pointer;
+  border: black 1px solid;
+  border-radius: 50%;
+  transition: transform 0.6s ease-in-out;
+}
+
+.overlay-close-button:hover {
+  animation: rotate-bounce 0.3s ease-in-out forwards;
+}
+
+.overlay-close-button:not(:hover) {
+  animation: rotate-reverse 0.3s ease-in-out forwards;
+}
+
+@keyframes rotate-bounce {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes rotate-reverse {
+  0% {
+    transform: rotate(90deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.overlay-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-top: 40px;
+  text-align: center;
+  background-color: #ccc;
+  border-radius: 0px 10px 10px 10px;
+  /* box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.3);*/
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  color: rgb(15, 15, 15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.all-corners {
+  border-radius: 10px;
+}
+
+.paper {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  margin: 100px;
+  background-color: white;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  rotate: -0.5deg;
+  z-index: 12;
+}
+
+.paper2 {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  margin: 100px;
+  background-color: white;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  rotate: 0.5deg;
+  z-index: 11;
+}
+
+.content {
+  padding-inline: 50px;
+  rotate: 0.5deg;
+  display: flex;
+  flex-direction: row;
+  gap: 10px; /* Espace entre les sections */
+  height: 100%;
+}
+
+.content2 {
+  rotate: 0.5deg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  height: 100%;
+}
+
+.photo-section {
+  position: relative;
+  width: 50%; /* Ajustez la largeur selon vos besoins */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-wrapper {
+  position: relative;
+  display: inline-block; /* Nécessaire pour que les scotchs soient relatifs à l'image */
+  /* width: 50%; Taille fixe ou ajustez selon vos besoins */
+  height: auto;
+}
+
+.photo {
+  width: 25vw; /* L'image occupe toute la largeur de son conteneur */
+  height: auto;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
+    rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+}
+
+.scotch {
+  position: absolute;
+  width: 40px; /* Taille des scotchs */
+  height: auto;
+  z-index: 2; /* Assurez-vous qu'ils apparaissent au-dessus de la photo */
+}
+
+.scotch-top {
+  width: 15vw;
+  top: -15px;
+  /* left: 50%; */
+  transform: translateX(-70%) rotate(20deg); /* Inclinaison pour un effet naturel */
+  opacity: 0.8;
+}
+
+.scotch-bottom {
+  width: 15vw;
+  bottom: -10px;
+  /* left: 50%; */
+  transform: translateX(-200%) rotate(25deg); /* Inclinaison opposée pour différenciation */
+  opacity: 0.8;
+}
+
+.wrapper-left-section {
+  position: relative;
+  display: inline-block; /* Nécessaire pour que les scotchs soient relatifs à l'image */
+  width: 50%; /* Taille fixe ou ajustez selon vos besoins */
+  height: auto;
+  display: flex;
+  align-items: center; /* Centrer verticalement le texte */
+  justify-content: center;
+}
+
+.smallPaper {
+  width: 70%;
+  height: 80%;
+  background-color: rgb(255, 255, 236); /* Couleur papier */
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.smallPaper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+    to bottom,
+    #fff calc(1em - 1px),
+    #ccc calc(1em - 1px),
+    #ccc 1em,
+    #fff 1em
+  );
+  background-position: 0% 1em;
+  background-size: 100% 1em;
+  background-repeat: repeat-y;
+  z-index: 1;
+  pointer-events: none; /* Ne pas bloquer les interactions avec le contenu */
+}
+
+.text-section {
+  position: relative; /* Relatif pour bien s'aligner avec ::before */
+  width: 100%; /* Occupe la majeure partie de la feuille */
+  font-size: 20px;
+  line-height: 36px; /* Correspond à l'espacement des lignes dans ::before */
+  color: #333;
+  padding: 25px;
+  text-align: left; /* Texte aligné à gauche */
+  font-family: "Nunito Sans"; /* Police manuscrite */
+  z-index: 2; /* Le texte au-dessus des lignes */
+}
+
+img {
+  /* pointer-events: none; Empêche les interactions de la souris, y compris le drag */
+  -webkit-user-drag: none; /* Désactive le drag pour les navigateurs basés sur WebKit */
+}
+
+.carousel-root {
+  width: 70%;
+}
+.diplomas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.diploma {
+  height: 90%;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.diploma-carousel-image {
+  width: 100%;
+  height: auto;
+  max-height: 300px; /* Limiter la hauteur */
+  display: block;
+  margin: auto;
+  object-fit: contain;
+}
+.each-slide {
+  text-align: center;
+}
+
+.each-slide-effect > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  height: 350px;
+}
+
+.each-slide-effect span {
+  padding: 20px;
+  font-size: 20px;
+  background: #efefef;
+  text-align: center;
+}
