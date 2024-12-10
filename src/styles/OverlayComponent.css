@@ -37,12 +37,17 @@
 
 .overlay-tab {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #cccccc;
   color: rgb(15, 15, 15);
   font-weight: bold;
-  font-size: 30px;
-  padding: 10px 100px;
+  font-size: 1.3rem;
+  /* padding: 10px 100px; */
   border-radius: 20px 20px 0 0;
+  width: 20%;
+  height: 40px;
 }
 
 .overlay-tab-2 {
@@ -86,6 +91,7 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(90deg);
   }
@@ -95,6 +101,7 @@
   0% {
     transform: rotate(90deg);
   }
+
   100% {
     transform: rotate(0deg);
   }
@@ -151,7 +158,8 @@
   rotate: 0.5deg;
   display: flex;
   flex-direction: row;
-  gap: 10px; /* Espace entre les sections */
+  gap: 10px;
+  /* Espace entre les sections */
   height: 100%;
 }
 
@@ -166,7 +174,8 @@
 
 .photo-section {
   position: relative;
-  width: 50%; /* Ajustez la largeur selon vos besoins */
+  width: 50%;
+  /* Ajustez la largeur selon vos besoins */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -174,13 +183,15 @@
 
 .photo-wrapper {
   position: relative;
-  display: inline-block; /* Nécessaire pour que les scotchs soient relatifs à l'image */
+  display: inline-block;
+  /* Nécessaire pour que les scotchs soient relatifs à l'image */
   /* width: 50%; Taille fixe ou ajustez selon vos besoins */
   height: auto;
 }
 
 .photo {
-  width: 25vw; /* L'image occupe toute la largeur de son conteneur */
+  width: 25vw;
+  /* L'image occupe toute la largeur de son conteneur */
   height: auto;
   border: 2px solid #ccc;
   border-radius: 4px;
@@ -190,16 +201,19 @@
 
 .scotch {
   position: absolute;
-  width: 40px; /* Taille des scotchs */
+  width: 40px;
+  /* Taille des scotchs */
   height: auto;
-  z-index: 2; /* Assurez-vous qu'ils apparaissent au-dessus de la photo */
+  z-index: 2;
+  /* Assurez-vous qu'ils apparaissent au-dessus de la photo */
 }
 
 .scotch-top {
   width: 15vw;
   top: -15px;
   /* left: 50%; */
-  transform: translateX(-70%) rotate(20deg); /* Inclinaison pour un effet naturel */
+  transform: translateX(-70%) rotate(20deg);
+  /* Inclinaison pour un effet naturel */
   opacity: 0.8;
 }
 
@@ -207,24 +221,29 @@
   width: 15vw;
   bottom: -10px;
   /* left: 50%; */
-  transform: translateX(-200%) rotate(25deg); /* Inclinaison opposée pour différenciation */
+  transform: translateX(-200%) rotate(25deg);
+  /* Inclinaison opposée pour différenciation */
   opacity: 0.8;
 }
 
 .wrapper-left-section {
   position: relative;
-  display: inline-block; /* Nécessaire pour que les scotchs soient relatifs à l'image */
-  width: 50%; /* Taille fixe ou ajustez selon vos besoins */
+  display: inline-block;
+  /* Nécessaire pour que les scotchs soient relatifs à l'image */
+  width: 50%;
+  /* Taille fixe ou ajustez selon vos besoins */
   height: auto;
   display: flex;
-  align-items: center; /* Centrer verticalement le texte */
+  align-items: center;
+  /* Centrer verticalement le texte */
   justify-content: center;
 }
 
 .smallPaper {
   width: 70%;
   height: 80%;
-  background-color: rgb(255, 255, 236); /* Couleur papier */
+  background-color: rgb(255, 255, 236);
+  /* Couleur papier */
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
   border-radius: 2px;
   position: relative;
@@ -238,40 +257,47 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: linear-gradient(
-    to bottom,
-    #fff calc(1em - 1px),
-    #ccc calc(1em - 1px),
-    #ccc 1em,
-    #fff 1em
-  );
+  background-image: linear-gradient(to bottom,
+      #fff calc(1em - 1px),
+      #ccc calc(1em - 1px),
+      #ccc 1em,
+      #fff 1em);
   background-position: 0% 1em;
   background-size: 100% 1em;
   background-repeat: repeat-y;
   z-index: 1;
-  pointer-events: none; /* Ne pas bloquer les interactions avec le contenu */
+  pointer-events: none;
+  /* Ne pas bloquer les interactions avec le contenu */
 }
 
 .text-section {
-  position: relative; /* Relatif pour bien s'aligner avec ::before */
-  width: 100%; /* Occupe la majeure partie de la feuille */
+  position: relative;
+  /* Relatif pour bien s'aligner avec ::before */
+  width: 100%;
+  /* Occupe la majeure partie de la feuille */
   font-size: 20px;
-  line-height: 36px; /* Correspond à l'espacement des lignes dans ::before */
+  line-height: 36px;
+  /* Correspond à l'espacement des lignes dans ::before */
   color: #333;
   padding: 25px;
-  text-align: left; /* Texte aligné à gauche */
-  font-family: "Nunito Sans"; /* Police manuscrite */
-  z-index: 2; /* Le texte au-dessus des lignes */
+  text-align: left;
+  /* Texte aligné à gauche */
+  font-family: "Nunito Sans";
+  /* Police manuscrite */
+  z-index: 2;
+  /* Le texte au-dessus des lignes */
 }
 
 img {
   /* pointer-events: none; Empêche les interactions de la souris, y compris le drag */
-  -webkit-user-drag: none; /* Désactive le drag pour les navigateurs basés sur WebKit */
+  -webkit-user-drag: none;
+  /* Désactive le drag pour les navigateurs basés sur WebKit */
 }
 
 .carousel-root {
   width: 70%;
 }
+
 .diplomas {
   display: flex;
   align-items: center;
@@ -286,16 +312,18 @@ img {
 .diploma-carousel-image {
   width: 100%;
   height: auto;
-  max-height: 300px; /* Limiter la hauteur */
+  max-height: 300px;
+  /* Limiter la hauteur */
   display: block;
   margin: auto;
   object-fit: contain;
 }
+
 .each-slide {
   text-align: center;
 }
 
-.each-slide-effect > div {
+.each-slide-effect>div {
   display: flex;
   align-items: center;
   justify-content: center;
