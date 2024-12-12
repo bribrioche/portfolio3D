@@ -1,0 +1,44 @@
+.overlay-container-3.visible {
+  top: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.overlay-tab-3 {
+  position: absolute;
+  background-color: #cccccc;
+  color: rgb(15, 15, 15);
+  font-weight: bold;
+  font-size: 30px;
+  padding: 10px 100px;
+  border-radius: 20px 20px 0 0;
+  left: 40%;
+}
+
+.content3 {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap; /* Pour gérer la répartition sur petits écrans */
+  justify-content: space-around; /* Centrer les éléments horizontalement */
+  padding: 30px;
+  align-items: center;
+  rotate: 0.5deg;
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 480px) {
+  .content3 {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.text-cyan-600 {
+  color: black;
+}
+
+.bg-cyan-200 {
+  background-color: rgb(255, 255, 255);
+}

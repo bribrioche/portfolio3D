@@ -1,9 +1,11 @@
 .overlay-container {
   position: absolute;
   top: -100%;
-  /* left: 50px; */
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
   width: calc(100% - 100px);
   height: calc(100% - 100px);
+  aspect-ratio: 3 / 2; /* Ratio par défaut (3:2) */
   background-color: #ffffff00;
   z-index: 10;
   display: flex;
@@ -13,24 +15,21 @@
   color: white;
   font-size: 18px;
   transition: top 0.4s ease-in-out;
-  max-width: 1600px;
+  max-width: 1600px; /* Largeur maximale sur écrans larges */
   font-family: "Nunito Sans";
   cursor: default;
 }
 
 .top {
+  position: absolute;
+  top: 2px;
+  left: 0;
   width: 100%;
-  z-index: 3;
+  z-index: 21;
 }
 
 .overlay-container.visible {
-  top: 50px;
-  display: flex;
-  align-items: center;
-}
-
-.overlay-container-2.visible {
-  top: 50px;
+  top: 50px; /* Position centrale */
   display: flex;
   align-items: center;
 }
@@ -44,21 +43,10 @@
   color: rgb(15, 15, 15);
   font-weight: bold;
   font-size: 1.3rem;
-  /* padding: 10px 100px; */
   border-radius: 20px 20px 0 0;
   width: 20%;
   height: 40px;
-}
-
-.overlay-tab-2 {
-  position: absolute;
-  background-color: #cccccc;
-  color: rgb(15, 15, 15);
-  font-weight: bold;
-  font-size: 30px;
-  padding: 10px 100px;
-  border-radius: 20px 20px 0 0;
-  left: 20%;
+  transition: width 0.3s ease-in-out;
 }
 
 .overlay-close-button {
@@ -91,7 +79,6 @@
   0% {
     transform: rotate(0deg);
   }
-
   100% {
     transform: rotate(90deg);
   }
@@ -101,7 +88,6 @@
   0% {
     transform: rotate(90deg);
   }
-
   100% {
     transform: rotate(0deg);
   }
@@ -115,14 +101,35 @@
   text-align: center;
   background-color: #ccc;
   border-radius: 0px 10px 10px 10px;
-  /* box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.3);*/
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   color: rgb(15, 15, 15);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
+  z-index: 20;
+}
+
+@media (max-width: 768px) {
+  .overlay-container {
+    aspect-ratio: 2 / 3; /* Ratio 2:3 sur mobile */
+    width: calc(100% - 100px);
+    height: calc(100% - 100px);
+  }
+
+  .overlay-content {
+    border-radius: 0px 0px 10px 10px;
+  }
+
+  .overlay-tab {
+    width: 100%; /* Tab prend 100% de la largeur */
+  }
+}
+
+@media (max-width: 480px) {
+  .overlay-content {
+    margin: 0;
+  }
 }
 
 .all-corners {
@@ -133,7 +140,7 @@
   position: absolute;
   width: 90%;
   height: 90%;
-  margin: 100px;
+  margin: 50px auto; /* Centrer sur les petits écrans */
   background-color: white;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
   border-radius: 2px;
@@ -145,7 +152,7 @@
   position: absolute;
   width: 90%;
   height: 90%;
-  margin: 100px;
+  margin: 50px auto;
   background-color: white;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
   border-radius: 2px;
@@ -154,22 +161,15 @@
 }
 
 .content {
-  padding-inline: 50px;
+  padding-inline: 20px; /* Moins de padding sur mobile */
   rotate: 0.5deg;
   display: flex;
-  flex-direction: row;
-  gap: 10px;
-  /* Espace entre les sections */
-  height: 100%;
-}
-
-.content2 {
-  rotate: 0.5deg;
-  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   align-items: center;
-  justify-content: center;
-  flex-direction: row;
+  gap: 10px; /* Espacement entre les sections */
   height: 100%;
+  flex-direction: row; /* Par défaut */
 }
 
 .photo-section {
@@ -202,48 +202,36 @@
 .scotch {
   position: absolute;
   width: 40px;
-  /* Taille des scotchs */
-  height: auto;
   z-index: 2;
-  /* Assurez-vous qu'ils apparaissent au-dessus de la photo */
 }
 
 .scotch-top {
   width: 15vw;
   top: -15px;
-  /* left: 50%; */
-  transform: translateX(-70%) rotate(20deg);
-  /* Inclinaison pour un effet naturel */
+  transform: translateX(100%) rotate(20deg);
   opacity: 0.8;
 }
 
 .scotch-bottom {
   width: 15vw;
   bottom: -10px;
-  /* left: 50%; */
-  transform: translateX(-200%) rotate(25deg);
-  /* Inclinaison opposée pour différenciation */
+  transform: translateX(-20%) rotate(25deg);
   opacity: 0.8;
 }
 
 .wrapper-left-section {
   position: relative;
-  display: inline-block;
-  /* Nécessaire pour que les scotchs soient relatifs à l'image */
-  width: 50%;
-  /* Taille fixe ou ajustez selon vos besoins */
-  height: auto;
+  width: 45%; /* Réduire la taille */
   display: flex;
   align-items: center;
-  /* Centrer verticalement le texte */
   justify-content: center;
 }
 
 .smallPaper {
-  width: 70%;
+  width: 80%;
   height: 80%;
+  height: auto;
   background-color: rgb(255, 255, 236);
-  /* Couleur papier */
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
   border-radius: 2px;
   position: relative;
@@ -257,11 +245,13 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: linear-gradient(to bottom,
-      #fff calc(1em - 1px),
-      #ccc calc(1em - 1px),
-      #ccc 1em,
-      #fff 1em);
+  background-image: linear-gradient(
+    to bottom,
+    #fff calc(1em - 1px),
+    #ccc calc(1em - 1px),
+    #ccc 1em,
+    #fff 1em
+  );
   background-position: 0% 1em;
   background-size: 100% 1em;
   background-repeat: repeat-y;
@@ -272,68 +262,72 @@
 
 .text-section {
   position: relative;
-  /* Relatif pour bien s'aligner avec ::before */
   width: 100%;
-  /* Occupe la majeure partie de la feuille */
-  font-size: 20px;
-  line-height: 36px;
-  /* Correspond à l'espacement des lignes dans ::before */
+  font-size: 21px;
+  line-height: 36.1px;
   color: #333;
-  padding: 25px;
+  margin-inline: 30px;
+  padding-block: 25px;
   text-align: left;
-  /* Texte aligné à gauche */
   font-family: "Nunito Sans";
-  /* Police manuscrite */
   z-index: 2;
-  /* Le texte au-dessus des lignes */
 }
 
 img {
-  /* pointer-events: none; Empêche les interactions de la souris, y compris le drag */
   -webkit-user-drag: none;
-  /* Désactive le drag pour les navigateurs basés sur WebKit */
 }
 
-.carousel-root {
-  width: 70%;
+/* Responsivité */
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column; /* Empiler les sections */
+    padding: 10px;
+  }
+
+  .photo-section,
+  .wrapper-left-section {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .photo {
+    width: 80%; /* Réduction pour petits écrans */
+    max-width: 200px;
+  }
+
+  .smallPaper {
+    width: 100%;
+    height: auto;
+  }
+
+  .text-section {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .scotch-top,
+  .scotch-bottom {
+    width: 10vw; /* Réduction pour petits écrans */
+  }
 }
 
-.diplomas {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+@media (max-width: 480px) {
+  .content {
+    padding: 5px;
+  }
 
-.diploma {
-  height: 90%;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
-}
+  .text-section {
+    font-size: 12px;
+    line-height: 18px;
+  }
 
-.diploma-carousel-image {
-  width: 100%;
-  height: auto;
-  max-height: 300px;
-  /* Limiter la hauteur */
-  display: block;
-  margin: auto;
-  object-fit: contain;
-}
+  .photo {
+    width: 70%;
+    max-width: 150px;
+  }
 
-.each-slide {
-  text-align: center;
-}
-
-.each-slide-effect>div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-size: cover;
-  height: 350px;
-}
-
-.each-slide-effect span {
-  padding: 20px;
-  font-size: 20px;
-  background: #efefef;
-  text-align: center;
+  .scotch-top,
+  .scotch-bottom {
+    width: 19vw;
+  }
 }

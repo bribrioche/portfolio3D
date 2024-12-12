@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // Importer les styles de la bibliothèque
-import "../styles/OverlayComponent.css";
+import "../styles/OverlayComponentGlobal.css";
+import "../styles/OverlayComponent2.css";
 import master from "../assets/master.png";
 import bts from "../assets/bts.png";
-import bac from "../assets/bac.png";
+import pin from "../assets/pin.png";
 
 interface OverlayComponent2Props {
   onShow: () => void;
@@ -46,24 +45,22 @@ const OverlayComponent2: React.FC<OverlayComponent2Props> = ({
       <div className="overlay-content all-corners">
         <div className="paper">
           <div className="content2">
-            <Carousel
-              className="diplomas"
-              showArrows={true} // Affiche les flèches pour le défilement
-              showThumbs={false} // Masque les vignettes en bas
-              infiniteLoop={true} // Boucle infinie
-              autoPlay={true} // Défilement automatique
-              swipeable={true}
-            >
-              <div>
-                <img src={master} alt="Master" className="diploma" />
-              </div>
-              <div>
-                <img src={bts} alt="BTS" className="diploma" />
-              </div>
-              <div>
-                <img src={bac} alt="Bac" className="diploma" />
-              </div>
-            </Carousel>
+            {/* Diplôme 1 */}
+            <div className="diploma-container">
+              <img src={pin} alt="Pin" className="pin" />
+              <img src={master} alt="Master" className="diploma" />
+              <p className="diploma-description">
+                IT Engineering Degree - 2022
+              </p>
+            </div>
+            {/* Diplôme 2 */}
+            <div className="diploma-container">
+              <img src={pin} alt="Pin" className="pin" />
+              <img src={bts} alt="BTS" className="diploma" />
+              <p className="diploma-description">
+                IT Advanced Technician's Certificate - 2019
+              </p>
+            </div>
           </div>
         </div>
         <div className="paper2"></div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../styles/OverlayComponent.css"; // Importer le fichier CSS
+import "../styles/OverlayComponentGlobal.css";
 import photo from "../assets/photo.png";
 import scotch1 from "../assets/scotch1.png";
 import scotch2 from "../assets/scotch2.png";
@@ -62,12 +62,12 @@ const OverlayComponent: React.FC<OverlayComponentProps> = ({
             <div className="wrapper-left-section">
               <div className="smallPaper">
                 <div className="text-section">
-                  <ul>
+                  <ul className="list-disc pl-5">
                     <li>Bryan Guillot</li>
                     <li>25 years old</li>
                     <li>Paris</li>
                     <li>FullStack Developer</li>
-                    <ul>
+                    <ul className="list-disc pl-5">
                       <li>Angular</li>
                       <li>VueJs</li>
                       <li>React</li>
@@ -76,7 +76,7 @@ const OverlayComponent: React.FC<OverlayComponentProps> = ({
                       <li>MariaDB/PostgreSQL</li>
                     </ul>
                     <li>Hobbies :</li>
-                    <ul>
+                    <ul className="list-disc pl-5">
                       <li>BasketBall</li>
                       <li>Japan</li>
                       <li>Drawing</li>
