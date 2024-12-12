@@ -7,6 +7,7 @@ import PaperComponent from "./PaperComponent";
 import OverlayComponent from "./OverlayComponent";
 import OverlayComponent2 from "./OverlayComponent2";
 import OverlayComponent3 from "./OverlayComponent3";
+import OverlayComponent4 from "./OverlayComponent4";
 
 const PortfolioBox: React.FC = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -102,6 +103,12 @@ const PortfolioBox: React.FC = () => {
       )}
       {clickedIndex === 2 && (
         <OverlayComponent3
+          onShow={() => setIsOverlayActive(true)}
+          onClose={handleOverlayClose}
+        />
+      )}
+      {clickedIndex === 3 && (
+        <OverlayComponent4
           onShow={() => setIsOverlayActive(true)}
           onClose={handleOverlayClose}
         />
