@@ -9,6 +9,12 @@ import OverlayComponent2 from "./OverlayComponent2";
 import OverlayComponent3 from "./OverlayComponent3";
 import OverlayComponent4 from "./OverlayComponent4";
 import OverlayComponent5 from "./OverlayComponent5";
+import OverlayComponent6 from "./OverlayComponent6";
+const backgroundMusic = new Audio(
+  require("../assets/sounds/ambiant_music.mp3")
+);
+backgroundMusic.volume = 0.5;
+const woosh = new Audio(require("../assets/sounds/woosh.mp3"));
 
 const PortfolioBox: React.FC = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -16,7 +22,7 @@ const PortfolioBox: React.FC = () => {
   const [isOverlayActive, setIsOverlayActive] = useState(false); // Nouvel état
   const handleOverlayClose = () => {
     setIsOverlayActive(false);
-    setClickedIndex(null); // Réinitialiser l'état des clics
+    setClickedIndex(null);
   };
   const RaycastManager: React.FC = () => {
     const raycaster = useRef(new Raycaster());
@@ -30,7 +36,11 @@ const PortfolioBox: React.FC = () => {
 
     const handleClick = () => {
       if (isOverlayActive) return; // Désactiver les clics si l'overlay est actif
-      if (hoveredIndex !== null) setClickedIndex(hoveredIndex);
+      if (hoveredIndex !== null) {
+        woosh.volume = 0.05;
+        woosh.play();
+        setClickedIndex(hoveredIndex);
+      }
     };
 
     useEffect(() => {
@@ -90,6 +100,10 @@ const PortfolioBox: React.FC = () => {
         justifyContent: "center",
       }}
     >
+      <audio autoPlay loop>
+        <source src={backgroundMusic.src} type="audio/mpeg" />
+        Votre navigateur ne supporte pas l'élément audio.
+      </audio>
       {clickedIndex === 0 && (
         <OverlayComponent
           onShow={() => setIsOverlayActive(true)}
@@ -116,6 +130,12 @@ const PortfolioBox: React.FC = () => {
       )}
       {clickedIndex === 4 && (
         <OverlayComponent5
+          onShow={() => setIsOverlayActive(true)}
+          onClose={handleOverlayClose}
+        />
+      )}
+      {clickedIndex === 5 && (
+        <OverlayComponent6
           onShow={() => setIsOverlayActive(true)}
           onClose={handleOverlayClose}
         />

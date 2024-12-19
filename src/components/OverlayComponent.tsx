@@ -3,6 +3,7 @@ import "../styles/OverlayComponentGlobal.css";
 import photo from "../assets/photo.png";
 import scotch1 from "../assets/scotch1.png";
 import scotch2 from "../assets/scotch2.png";
+const woosh_invert = new Audio(require("../assets/sounds/woosh_invert.mp3"));
 
 interface OverlayComponentProps {
   onShow: () => void;
@@ -25,6 +26,8 @@ const OverlayComponent: React.FC<OverlayComponentProps> = ({
   }, [onShow]);
 
   const handleClose = () => {
+    woosh_invert.volume = 0.05;
+    woosh_invert.play();
     setIsVisible(false);
     setTimeout(onClose, 500); // Fermer après la transition
   };
@@ -62,16 +65,18 @@ const OverlayComponent: React.FC<OverlayComponentProps> = ({
           <div className="content">
             <div className="photo-section">
               <div className="photo-wrapper">
-                <img src={photo} alt="Photo" className="photo" />
+                <img src={photo} alt="Photo" className="photo" loading="lazy" />
                 <img
                   src={scotch2}
                   alt="Scotch bas"
                   className="scotch scotch-top"
+                  loading="lazy"
                 />
                 <img
                   src={scotch1}
                   alt="Scotch haut"
                   className="scotch scotch-bottom"
+                  loading="lazy"
                 />
               </div>
             </div>

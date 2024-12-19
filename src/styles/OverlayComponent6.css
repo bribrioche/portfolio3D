@@ -1,0 +1,25 @@
+.content6 {
+  padding-inline: 20px; /* Moins de padding sur mobile */
+  rotate: 0.5deg;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px; /* Espacement entre les sections */
+  height: 100%;
+  flex-direction: row; /* Par défaut */
+}
+
+.content6 > div:nth-child(odd) {
+  transform: translateY(50px) rotate(-2deg);
+}
+
+.content6 > div:nth-child(even) {
+  transform: translateY(-55px) rotate(1deg);
+}
+
+.content6 > * {
+  transform: translateY(calc(var(--random-offset, 0px)));
+  --random-offset: calc(-5px + 10px * (random())); /* Variation de décalage */
+  flex: 1 1 auto; /* Permet à chaque élément de prendre un espace automatique */
+}

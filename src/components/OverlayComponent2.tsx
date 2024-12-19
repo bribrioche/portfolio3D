@@ -4,6 +4,7 @@ import "../styles/OverlayComponent2.css";
 import master from "../assets/master.png";
 import bts from "../assets/bts.png";
 import pin from "../assets/pin.png";
+const woosh_invert = new Audio(require("../assets/sounds/woosh_invert.mp3"));
 
 interface OverlayComponent2Props {
   onShow: () => void;
@@ -26,6 +27,8 @@ const OverlayComponent2: React.FC<OverlayComponent2Props> = ({
   }, [onShow]);
 
   const handleClose = () => {
+    woosh_invert.volume = 0.05;
+    woosh_invert.play();
     setIsVisible(false);
     setTimeout(onClose, 500); // Fermer après la transition
   };
@@ -63,8 +66,13 @@ const OverlayComponent2: React.FC<OverlayComponent2Props> = ({
           <div className="content2">
             {/* Diplôme 1 */}
             <div className="diploma-container">
-              <img src={pin} alt="Pin" className="pin" />
-              <img src={master} alt="Master" className="diploma" />
+              <img src={pin} alt="Pin" className="pin" loading="lazy" />
+              <img
+                src={master}
+                alt="Master"
+                className="diploma"
+                loading="lazy"
+              />
               <p className="diploma-description">
                 IT Engineering Degree - 2022
               </p>

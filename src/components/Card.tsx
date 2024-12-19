@@ -13,10 +13,12 @@ const TiltCard = ({
   title,
   subtitle,
   description,
+  image,
 }: {
   title: string;
   subtitle?: string;
   description?: string;
+  image?: string;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -69,12 +71,17 @@ const TiltCard = ({
           width: "100%",
           height: "100%",
           transition: "all 0.5s",
+          backgroundImage: image ? `url(${image})` : undefined,
+          backgroundSize: "auto",
+          backgroundPosition: "center",
+          //   filter: "blur(10px)", // Flou uniquement sur l'image
         }}
-        className="absolute inset-4 grid place-content-center rounded-xl bg-slate-50 shadow-md hover:shadow-2xl border-2 border-grey-200"
+        className="absolute inset-4 place-content-center rounded-xl bg-slate-50/70 shadow-md hover:shadow-2xl "
       >
-        <p className="text-center text-2xl font-bold text-black ">{title}</p>
+        <h1 className="text-center text-4xl font-bold text-black ">{title}</h1>
+        <br />
         {subtitle && (
-          <p className="text-center text-xl font-semibold text-black">
+          <p className="text-center text-2xl font-semibold text-black">
             {subtitle}
           </p>
         )}

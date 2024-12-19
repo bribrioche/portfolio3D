@@ -24,6 +24,7 @@ import { FaCss3Alt } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io5";
 import { TbBrandReactNative } from "react-icons/tb";
 import { FaNodeJs } from "react-icons/fa";
+const woosh_invert = new Audio(require("../assets/sounds/woosh_invert.mp3"));
 
 interface OverlayComponent4Props {
   onShow: () => void;
@@ -46,6 +47,8 @@ const OverlayComponent4: React.FC<OverlayComponent4Props> = ({
   }, [onShow]);
 
   const handleClose = () => {
+    woosh_invert.volume = 0.05;
+    woosh_invert.play();
     setIsVisible(false);
     setTimeout(onClose, 500); // Fermer après la transition
   };
@@ -101,8 +104,8 @@ const OverlayComponent4: React.FC<OverlayComponent4Props> = ({
                   <div className="left">
                     <div className="title">Compass</div>
                     <div className="images">
-                      <img src={compass1} alt="compass" />
-                      <img src={compass2} alt="compass" />
+                      <img src={compass1} alt="compass" loading="lazy" />
+                      <img src={compass2} alt="compass" loading="lazy" />
                     </div>
                   </div>
                   <div className="right">
@@ -131,7 +134,11 @@ const OverlayComponent4: React.FC<OverlayComponent4Props> = ({
                   <div className="left">
                     <div className="title">TicTacToe NewGen</div>
                     <div className="images">
-                      <img src={ticTacToe} alt="TicTacToe NewGen" />
+                      <img
+                        src={ticTacToe}
+                        alt="TicTacToe NewGen"
+                        loading="lazy"
+                      />
                     </div>
                   </div>
                   <div className="right">
@@ -154,8 +161,16 @@ const OverlayComponent4: React.FC<OverlayComponent4Props> = ({
                   <div className="left">
                     <div className="title">Portfolio</div>
                     <div className="images">
-                      <img src={portfolio2} alt="Portfolio Image" />
-                      <img src={portfolio1} alt="Portfolio Image" />
+                      <img
+                        src={portfolio2}
+                        alt="Portfolio Image"
+                        loading="lazy"
+                      />
+                      <img
+                        src={portfolio1}
+                        alt="Portfolio Image"
+                        loading="lazy"
+                      />
                     </div>
                   </div>
                   <div className="right">
@@ -179,8 +194,16 @@ const OverlayComponent4: React.FC<OverlayComponent4Props> = ({
                   <div className="left">
                     <div className="title">Fishing Game</div>
                     <div className="images">
-                      <img src={fishing_game1} alt="Fishing Game Image" />
-                      <img src={fishing_game3} alt="Fishing Game Image" />
+                      <img
+                        src={fishing_game1}
+                        alt="Fishing Game Image"
+                        loading="lazy"
+                      />
+                      <img
+                        src={fishing_game3}
+                        alt="Fishing Game Image"
+                        loading="lazy"
+                      />
                     </div>
                   </div>
                   <div className="right">
@@ -214,7 +237,11 @@ const OverlayComponent4: React.FC<OverlayComponent4Props> = ({
                   <div className="left">
                     <div className="title">AntiGaspi</div>
                     <div className="images">
-                      <img src={antigaspi} alt="Antigaspi Image" />
+                      <img
+                        src={antigaspi}
+                        alt="Antigaspi Image"
+                        loading="lazy"
+                      />
                     </div>
                   </div>
                   <div className="right">

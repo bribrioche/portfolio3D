@@ -1,0 +1,101 @@
+/* Some positioning and ratios */
+.sticky-container {
+  width: 100%;
+  max-width: 270px;
+  position: relative;
+}
+
+.sticky-outer {
+  display: flex;
+  padding-top: 92.5925926%;
+  position: relative;
+
+  width: 100%;
+}
+
+.sticky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Shadow behind the sticky note */
+.sticky:before {
+  box-shadow: -2px 2px 15px 0 rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.25);
+  content: "";
+  width: 90%;
+  left: 5px;
+  height: 83%;
+  position: absolute;
+  top: 30%;
+}
+
+/* The sticky note itself */
+.sticky-content {
+  padding: 30px;
+  background: linear-gradient(
+    180deg,
+    #fdfd96 0%,
+    #fdfd96 12%,
+    #fdfd96 75%,
+    #fdfd96 100%
+  );
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Kalam", cursive;
+  font-size: 0.5rem;
+
+  clip-path: url(#stickyClip);
+}
+
+.sticky-icon {
+  display: inline-block; /* Garantit que l'icône suit le flux du texte */
+  width: 50px;
+  height: 50px;
+  margin-right: 10px; /* Espacement entre l'icône et le texte */
+  line-height: 0; /* Supprime l'espacement vertical par défaut */
+}
+
+.sticky-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Add responsiveness */
+@media screen and (min-width: 640px) {
+  .sticky:before {
+    height: 79%;
+    width: 90%;
+  }
+  .sticky-content {
+    font-size: 1.25rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .sticky:before {
+    height: 75%;
+    width: 90%;
+  }
+  .sticky-content {
+    font-size: 1.25rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .sticky:before {
+    height: 73%;
+    width: 90%;
+  }
+  .sticky-content {
+    font-size: 1.25rem;
+  }
+}

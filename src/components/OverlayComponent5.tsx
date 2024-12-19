@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import "../styles/OverlayComponentGlobal.css";
 import "../styles/OverlayComponent5.css";
 import Card from "./Card";
+import japanImg from "../assets/japan.png";
+import franceImg from "../assets/france.png";
+import englishImg from "../assets/english.png";
+const woosh_invert = new Audio(require("../assets/sounds/woosh_invert.mp3"));
 
 interface OverlayComponent5Props {
   onShow: () => void;
@@ -24,6 +28,8 @@ const OverlayComponent5: React.FC<OverlayComponent5Props> = ({
   }, [onShow]);
 
   const handleClose = () => {
+    woosh_invert.volume = 0.05;
+    woosh_invert.play();
     setIsVisible(false);
     setTimeout(onClose, 500); // Fermer après la transition
   };
@@ -66,6 +72,7 @@ const OverlayComponent5: React.FC<OverlayComponent5Props> = ({
                   title="Bonjour !"
                   subtitle="French"
                   description="Native language"
+                  image={franceImg}
                 />
               </div>
               <div className="card">
@@ -73,6 +80,7 @@ const OverlayComponent5: React.FC<OverlayComponent5Props> = ({
                   title="Hello !"
                   subtitle="English"
                   description="Advanced level of English"
+                  image={englishImg}
                 />
               </div>
               <div className="card">
@@ -80,6 +88,7 @@ const OverlayComponent5: React.FC<OverlayComponent5Props> = ({
                   title="こんにちは ！"
                   subtitle="Japan"
                   description="Learning on personal time"
+                  image={japanImg}
                 />
               </div>
             </div>

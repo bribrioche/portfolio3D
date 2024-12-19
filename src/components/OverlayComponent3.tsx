@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "../styles/OverlayComponentGlobal.css";
 import "../styles/OverlayComponent3.css";
-import { Button, Timeline } from "flowbite-react";
-import { HiArrowNarrowRight, HiCalendar } from "react-icons/hi";
-import { FaCircle } from "react-icons/fa";
+import { Timeline } from "flowbite-react";
 import { RiComputerLine } from "react-icons/ri";
+const woosh_invert = new Audio(require("../assets/sounds/woosh_invert.mp3"));
 
 interface OverlayComponent3Props {
   onShow: () => void;
@@ -27,6 +26,8 @@ const OverlayComponent3: React.FC<OverlayComponent3Props> = ({
   }, [onShow]);
 
   const handleClose = () => {
+    woosh_invert.volume = 0.05;
+    woosh_invert.play();
     setIsVisible(false);
     setTimeout(onClose, 500); // Fermer après la transition
   };
