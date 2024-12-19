@@ -31,6 +31,22 @@ const OverlayComponent3: React.FC<OverlayComponent3Props> = ({
     setTimeout(onClose, 500); // Fermer après la transition
   };
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        handleClose(); // Fermer l'overlay si "Échap" est pressé
+      }
+    };
+
+    // Ajouter un écouteur global pour les événements "keydown"
+    window.addEventListener("keydown", handleKeyDown);
+
+    // Nettoyer l'écouteur à la désinstallation du composant
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []); // Exécuté une fois à l'initialisation
+
   return (
     <div className={`overlay-container ${isVisible ? "visible" : ""}`}>
       <div className="top">

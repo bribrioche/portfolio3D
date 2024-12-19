@@ -51,7 +51,7 @@ const PortfolioBox: React.FC = () => {
       );
 
       if (intersects.length > 0) {
-        const boxIntersected = intersects[0].object.name === "Cube_1";
+        const boxIntersected = intersects[0].object.name === "casier";
 
         if (!boxIntersected) {
           const firstIntercalary = intersects.find(
