@@ -220,11 +220,12 @@
 }
 
 .wrapper-left-section {
-  position: relative;
+  /* position: relative; */
   width: 45%; /* Réduire la taille */
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .smallPaper {
@@ -258,6 +259,60 @@
   z-index: 1;
   pointer-events: none;
   /* Ne pas bloquer les interactions avec le contenu */
+}
+
+:root {
+  --vertical-line-color: #bf4264;
+  --horizontal-line-color: #4bbcb3;
+  --paper-note-color: white;
+  --shadow-color: rgb(100, 100, 100);
+
+  --line-height: 30px;
+  --line-sides-padding: 10px;
+
+  --paper-note-left-padding: 30px;
+  --paper-note-top-padding: 50px;
+}
+
+.center {
+  margin: auto;
+}
+
+.paper-note {
+  /* border: 1px dashed rgb(255, 157, 46); */
+  background: linear-gradient(
+        to right,
+        var(--vertical-line-color) 0px,
+        var(--vertical-line-color) 1px,
+        transparent 1px,
+        transparent
+      )
+      var(--paper-note-left-padding) 0px,
+    repeating-linear-gradient(
+        to bottom,
+        var(--horizontal-line-color) 0px,
+        var(--horizontal-line-color) 1px,
+        transparent 1px,
+        transparent var(--line-height)
+      )
+      0px var(--paper-note-top-padding) no-repeat,
+    white;
+
+  box-sizing: border-box;
+  width: 65vw;
+  min-height: min(40vh, 350px);
+  box-shadow: 0 0 20px var(--shadow-color);
+  padding: var(--paper-note-top-padding) var(--line-sides-padding)
+    var(--line-height)
+    calc(var(--paper-note-left-padding) + var(--line-sides-padding));
+
+  line-height: var(--line-height);
+  /* font-weight: bold; */
+  text-align: left;
+}
+
+.sub-text {
+  padding-left: 10px;
 }
 
 .text-section {
