@@ -10,6 +10,17 @@
   flex-direction: row; /* Par défaut */
 }
 
+.overlay-tab-6 {
+  position: absolute;
+  background-color: #cccccc;
+  color: rgb(15, 15, 15);
+  font-weight: bold;
+  font-size: 30px;
+  padding: 10px 100px;
+  border-radius: 20px 20px 0 0;
+  left: 70%;
+}
+
 .content6 > div:nth-child(odd) {
   transform: translateY(50px) rotate(-2deg);
 }

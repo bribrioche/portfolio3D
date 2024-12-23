@@ -55,7 +55,7 @@ const OverlayComponent6: React.FC<OverlayComponent6Props> = ({
   return (
     <div className={`overlay-container ${isVisible ? "visible" : ""}`}>
       <div className="top">
-        <div className="overlay-tab-3">Contact Me</div>
+        <div className="overlay-tab-6">Contact Me</div>
         <button
           onClick={handleClose}
           className="overlay-close-button"

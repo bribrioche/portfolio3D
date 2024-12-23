@@ -10,6 +10,23 @@
   flex-direction: column; /* Par défaut */
 }
 
+.overlay-container-4.visible {
+  top: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.overlay-tab-4 {
+  position: absolute;
+  background-color: #cccccc;
+  color: rgb(15, 15, 15);
+  font-weight: bold;
+  font-size: 30px;
+  padding: 10px 100px;
+  border-radius: 20px 20px 0 0;
+  left: 48%;
+}
+
 .pages {
   height: 70vh;
   width: calc(65vh * 3 / 2); /* Assure un ratio 2:3 */
