@@ -27,14 +27,23 @@ const PortfolioBox: React.FC = () => {
   const RaycastManager: React.FC = () => {
     const raycaster = useRef(new Raycaster());
     const mouse = useRef(new Vector2());
-
+  
     const handleMouseMove = (event: MouseEvent) => {
       if (isOverlayActive) return; // Désactiver les mouvements si l'overlay est actif
       mouse.current.x = (event.clientX / window.innerWidth) * 2 - 1;
       mouse.current.y = -(event.clientY / window.innerHeight) * 2 + 1;
     };
+  
+    const handleTouchMove = (event: TouchEvent) => {
+      if (isOverlayActive) return; // Désactiver les mouvements si l'overlay est actif
+      const touch = event.touches[0]; // Prendre le premier point de contact
+      mouse.current.x = (touch.clientX / window.innerWidth) * 2 - 1;
+      mouse.current.y = -(touch.clientY / window.innerHeight) * 2 + 1;
+      setClickedIndex(hoveredIndex);
 
-    const handleClick = () => {
+    };
+  
+    const handleClick = (event: MouseEvent | TouchEvent) => {
       if (isOverlayActive) return; // Désactiver les clics si l'overlay est actif
       if (hoveredIndex !== null) {
         woosh.volume = 0.05;
@@ -42,50 +51,43 @@ const PortfolioBox: React.FC = () => {
         setClickedIndex(hoveredIndex);
       }
     };
-
-    useEffect(() => {
-      window.addEventListener("mousemove", handleMouseMove);
-      window.addEventListener("click", handleClick);
-      return () => {
-        window.removeEventListener("mousemove", handleMouseMove);
-        window.removeEventListener("click", handleClick);
-      };
-    }, [hoveredIndex, isOverlayActive]); // Ajouter la dépendance isOverlayActive
-
+  
+    
     useFrame(({ camera, scene }) => {
       if (isOverlayActive) return; // Désactiver le raycast si l'overlay est actif
-
+  
       raycaster.current.setFromCamera(mouse.current, camera);
-      const intersects = raycaster.current.intersectObjects(
-        scene.children,
-        true
-      );
-
+      const intersects = raycaster.current.intersectObjects(scene.children, true);
+  
       if (intersects.length > 0) {
-        const boxIntersected = intersects[0].object.name === "casier";
-
-        if (!boxIntersected) {
-          const firstIntercalary = intersects.find(
-            (intersect) => intersect.object.userData.index !== undefined
-          );
-
-          if (firstIntercalary) {
-            setHoveredIndex(firstIntercalary.object.userData.index);
-            document.body.style.cursor = "pointer";
-          } else {
-            setHoveredIndex(null);
-            document.body.style.cursor = "default";
-          }
-        } else {
+        const target = intersects[0].object;
+        if (target.name === "casier") {
           setHoveredIndex(null);
           document.body.style.cursor = "default";
+        } else if (target.userData.index !== undefined) {
+          setHoveredIndex(target.userData.index);
+          document.body.style.cursor = "pointer";
         }
       } else {
         setHoveredIndex(null);
         document.body.style.cursor = "default";
       }
     });
-
+  
+    useEffect(() => {
+      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("click", handleClick);
+      window.addEventListener("touchmove", handleTouchMove, { passive: true });
+      window.addEventListener("touchstart", handleClick, { passive: true });
+  
+      return () => {
+        window.removeEventListener("mousemove", handleMouseMove);
+        window.removeEventListener("click", handleClick);
+        window.removeEventListener("touchmove", handleTouchMove);
+        window.removeEventListener("touchstart", handleClick);
+      };
+    }, [hoveredIndex, isOverlayActive]);
+  
     return null;
   };
 

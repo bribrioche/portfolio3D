@@ -1,5 +1,5 @@
 import React from 'react';
-import PortfolioBox from './components/PortfolioBox'; // Assurez-vous que le chemin est correct
+import PortfolioBox from './components/PortfolioBox'; 
 
 const App: React.FC = () => {
   return (

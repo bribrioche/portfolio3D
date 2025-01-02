@@ -76,7 +76,7 @@ const OverlayComponent4: React.FC<OverlayComponent4Props> = ({
   };
 
   const next = () => {
-    setSelected((selected) => Math.min(selected + 1, 2));
+    setSelected((selected) => Math.min(selected + 1, 4));
   };
 
   return (
@@ -268,12 +268,12 @@ const OverlayComponent4: React.FC<OverlayComponent4Props> = ({
             <div className="buttons">
               <button onClick={back} disabled={selected === 0}>
                 <FaLongArrowAltLeft
-                  className={selected != 0 ? "icon" : "disabled-icon"}
+                  className={selected !== 0 ? "icon" : "disabled-icon"}
                 />
               </button>
-              <button onClick={next} disabled={selected === 2}>
+              <button onClick={next} disabled={selected === 4}>
                 <FaLongArrowAltRight
-                  className={selected != 2 ? "icon" : "disabled-icon"}
+                  className={selected !== 4 ? "icon" : "disabled-icon"}
                 />
               </button>
             </div>
