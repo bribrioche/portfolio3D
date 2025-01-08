@@ -86,6 +86,8 @@ const OverlayComponent: React.FC<OverlayComponentProps> = ({
                 <br />
                 25 years old
                 <br />
+                Paris
+                <br />
                 FullStack Developer :
                 <br />
                 <div className="sub-text">• Angular</div>
@@ -100,27 +102,6 @@ const OverlayComponent: React.FC<OverlayComponentProps> = ({
                 <div className="sub-text">• Japan</div>
                 <div className="sub-text">• Drawing</div>
                 <div className="sub-text">• Music</div>
-                {/* <ul className="list-disc pl-5">
-                  <li>Bryan Guillot</li>
-                  <li>25 years old</li>
-                  <li>Paris</li>
-                  <li>FullStack Developer</li>
-                  <ul className="list-disc pl-5">
-                    <li>Angular</li>
-                    <li>VueJs</li>
-                    <li>React</li>
-                    <li>NodeJs</li>
-                    <li>MongoDB</li>
-                    <li>MariaDB/PostgreSQL</li>
-                  </ul>
-                  <li>Hobbies :</li>
-                  <ul className="list-disc pl-5">
-                    <li>BasketBall</li>
-                    <li>Japan</li>
-                    <li>Drawing</li>
-                    <li>Music</li>
-                  </ul>
-                </ul> */}
               </div>
             </div>
           </div>

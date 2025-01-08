@@ -3,6 +3,12 @@ import "../styles/OverlayComponentGlobal.css";
 import "../styles/OverlayComponent3.css";
 import { Timeline } from "flowbite-react";
 import { RiComputerLine } from "react-icons/ri";
+import biyaku from "../assets/biyaku.png";
+import retail_vr from "../assets/retail_vr.png";
+import ronceray from "../assets/mjc_ronceray.png";
+import coclico from "../assets/coclico.png";
+import solutec from "../assets/solutec.png";
+
 const woosh_invert = new Audio(require("../assets/sounds/woosh_invert.mp3"));
 
 interface OverlayComponent3Props {
@@ -68,6 +74,18 @@ const OverlayComponent3: React.FC<OverlayComponent3Props> = ({
                 <Timeline.Point icon={RiComputerLine} />
                 <Timeline.Content>
                   <Timeline.Time>2018</Timeline.Time>
+                  <div className="image">
+                    <img
+                      src={coclico}
+                      alt="coclico logo"
+                      style={{
+                        alignSelf: "center",
+                        textAlign: "center",
+                        maxWidth: "150px",
+                        borderRadius: "5px",
+                      }}
+                    />
+                  </div>
                   <Timeline.Title>
                     Intership / Coclico, Le Mans, France
                   </Timeline.Title>
@@ -80,6 +98,18 @@ const OverlayComponent3: React.FC<OverlayComponent3Props> = ({
                 <Timeline.Point icon={RiComputerLine} />
                 <Timeline.Content>
                   <Timeline.Time>2019</Timeline.Time>
+                  <div className="image">
+                    <img
+                      src={ronceray}
+                      alt="mjc ronceray logo"
+                      style={{
+                        alignSelf: "center",
+                        textAlign: "center",
+                        maxWidth: "150px",
+                        borderRadius: "5px",
+                      }}
+                    />
+                  </div>
                   <Timeline.Title>
                     Internship / MJC Ronceray, Le Mans, France
                   </Timeline.Title>
@@ -92,6 +122,18 @@ const OverlayComponent3: React.FC<OverlayComponent3Props> = ({
                 <Timeline.Point icon={RiComputerLine} />
                 <Timeline.Content>
                   <Timeline.Time>2021-2022</Timeline.Time>
+                  <div className="image">
+                    <img
+                      src={biyaku}
+                      alt="Biyaku logo"
+                      style={{
+                        alignSelf: "center",
+                        textAlign: "center",
+                        maxWidth: "150px",
+                        borderRadius: "5px",
+                      }}
+                    />
+                  </div>
                   <Timeline.Title>
                     Self-employed / Biyaku, Le Mans, France
                   </Timeline.Title>
@@ -104,6 +146,18 @@ const OverlayComponent3: React.FC<OverlayComponent3Props> = ({
                 <Timeline.Point icon={RiComputerLine} />
                 <Timeline.Content>
                   <Timeline.Time>March 2022 to June 2023</Timeline.Time>
+                  <div className="image">
+                    <img
+                      src={retail_vr}
+                      alt="retail VR logo"
+                      style={{
+                        alignSelf: "center",
+                        textAlign: "center",
+                        maxWidth: "150px",
+                        borderRadius: "5px",
+                      }}
+                    />
+                  </div>
                   <Timeline.Title>RetailVR, Nantes, France</Timeline.Title>
                   <Timeline.Body>
                     Development of a 3D environment creation software (Unity,
@@ -115,6 +169,18 @@ const OverlayComponent3: React.FC<OverlayComponent3Props> = ({
                 <Timeline.Point icon={RiComputerLine} />
                 <Timeline.Content>
                   <Timeline.Time>July 2023 to Now</Timeline.Time>
+                  <div className="image">
+                    <img
+                      src={solutec}
+                      alt="Solutec logo"
+                      style={{
+                        alignSelf: "center",
+                        textAlign: "center",
+                        maxWidth: "150px",
+                        borderRadius: "5px",
+                      }}
+                    />
+                  </div>
                   <Timeline.Title>Solutec, Paris, France</Timeline.Title>
                   <Timeline.Body>
                     SNCF - Fullstack Development (Angular, NodeJS, Gitlab,

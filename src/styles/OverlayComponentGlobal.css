@@ -175,7 +175,6 @@
 .photo-section {
   position: relative;
   width: 50%;
-  /* Ajustez la largeur selon vos besoins */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -220,45 +219,11 @@
 }
 
 .wrapper-left-section {
-  /* position: relative; */
-  width: 45%; /* Réduire la taille */
+  width: 45%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-}
-
-.smallPaper {
-  width: 80%;
-  height: 80%;
-  height: auto;
-  background-color: rgb(255, 255, 236);
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
-  border-radius: 2px;
-  position: relative;
-  overflow: hidden;
-}
-
-.smallPaper::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: linear-gradient(
-    to bottom,
-    #fff calc(1em - 1px),
-    #ccc calc(1em - 1px),
-    #ccc 1em,
-    #fff 1em
-  );
-  background-position: 0% 1em;
-  background-size: 100% 1em;
-  background-repeat: repeat-y;
-  z-index: 1;
-  pointer-events: none;
-  /* Ne pas bloquer les interactions avec le contenu */
 }
 
 :root {
@@ -279,7 +244,6 @@
 }
 
 .paper-note {
-  /* border: 1px dashed rgb(255, 157, 46); */
   background: linear-gradient(
         to right,
         var(--vertical-line-color) 0px,
@@ -297,18 +261,17 @@
       )
       0px var(--paper-note-top-padding) no-repeat,
     white;
-
   box-sizing: border-box;
   width: 65vw;
   min-height: min(40vh, 350px);
-  box-shadow: 0 0 20px var(--shadow-color);
+  box-shadow: 0 0 5px var(--shadow-color);
   padding: var(--paper-note-top-padding) var(--line-sides-padding)
     var(--line-height)
     calc(var(--paper-note-left-padding) + var(--line-sides-padding));
-
   line-height: var(--line-height);
-  /* font-weight: bold; */
   text-align: left;
+  border-radius: 5px;
+  margin: 30px;
 }
 
 .sub-text {

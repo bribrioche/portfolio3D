@@ -42,3 +42,10 @@
 .bg-cyan-200 {
   background-color: rgb(255, 255, 255);
 }
+
+.image {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

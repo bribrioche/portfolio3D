@@ -13,7 +13,7 @@ import fishing_game1 from "../assets/fishing_game1.png";
 import fishing_game3 from "../assets/fishing_game3.png";
 import antigaspi from "../assets/AntiGaspi.png";
 
-import { FaLongArrowAltLeft } from "react-icons/fa";
+import { FaFigma, FaLongArrowAltLeft } from "react-icons/fa";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { FaAngular } from "react-icons/fa";
 import { FaReact } from "react-icons/fa";
@@ -23,7 +23,10 @@ import { FaHtml5 } from "react-icons/fa";
 import { FaCss3Alt } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io5";
 import { TbBrandReactNative } from "react-icons/tb";
+import { FiFigma } from "react-icons/fi";
 import { FaNodeJs } from "react-icons/fa";
+import { FaGitlab } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa6";
 const woosh_invert = new Audio(require("../assets/sounds/woosh_invert.mp3"));
 
 interface OverlayComponent4Props {
@@ -127,6 +130,14 @@ const OverlayComponent4: React.FC<OverlayComponent4Props> = ({
                         <FaReact className="techno-icon" />
                         <div className="techno-title">React</div>
                       </div>
+                      <div className="techno">
+                        <FiFigma className="techno-icon" />
+                        <div className="techno-title">Fimga</div>
+                      </div>
+                      <div className="techno">
+                        <FaGitlab className="techno-icon" />
+                        <div className="techno-title">Gitlab</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -153,6 +164,10 @@ const OverlayComponent4: React.FC<OverlayComponent4Props> = ({
                       <div className="techno">
                         <FaVuejs className="techno-icon" />
                         <div className="techno-title">VueJs</div>
+                      </div>
+                      <div className="techno">
+                        <FaGithub className="techno-icon" />
+                        <div className="techno-title">Github</div>
                       </div>
                     </div>
                   </div>
@@ -186,6 +201,10 @@ const OverlayComponent4: React.FC<OverlayComponent4Props> = ({
                       <div className="techno">
                         <TbBrandThreejs className="techno-icon" />
                         <div className="techno-title">TreeJS</div>
+                      </div>
+                      <div className="techno">
+                        <FaGithub className="techno-icon" />
+                        <div className="techno-title">Github</div>
                       </div>
                     </div>
                   </div>
@@ -230,6 +249,14 @@ const OverlayComponent4: React.FC<OverlayComponent4Props> = ({
                         <TbBrandThreejs className="techno-icon" />
                         <div className="techno-title">TreeJS</div>
                       </div>
+                      <div className="techno">
+                        <FaFigma className="techno-icon" />
+                        <div className="techno-title">Figma</div>
+                      </div>
+                      <div className="techno">
+                        <FaGithub className="techno-icon" />
+                        <div className="techno-title">Github</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -259,6 +286,10 @@ const OverlayComponent4: React.FC<OverlayComponent4Props> = ({
                       <div className="techno">
                         <FaNodeJs className="techno-icon" />
                         <div className="techno-title">NodeJS</div>
+                      </div>
+                      <div className="techno">
+                        <FaGithub className="techno-icon" />
+                        <div className="techno-title">Github</div>
                       </div>
                     </div>
                   </div>

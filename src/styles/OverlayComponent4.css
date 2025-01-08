@@ -8,6 +8,7 @@
   gap: 10px; /* Espacement entre les sections */
   height: 100%;
   flex-direction: column; /* Par défaut */
+  flex-wrap: nowrap;
 }
 
 .overlay-container-4.visible {
@@ -140,7 +141,7 @@ svg {
 }
 
 .techno {
-  margin-inline: 30px;
+  min-width: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
