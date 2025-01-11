@@ -233,9 +233,9 @@
   --shadow-color: rgb(100, 100, 100);
 
   --line-height: 30px;
-  --line-sides-padding: 10px;
+  --line-sides-padding: 15px;
 
-  --paper-note-left-padding: 30px;
+  --paper-note-left-padding: 50px;
   --paper-note-top-padding: 50px;
 }
 
@@ -264,14 +264,15 @@
   box-sizing: border-box;
   width: 65vw;
   min-height: min(40vh, 350px);
-  box-shadow: 0 0 5px var(--shadow-color);
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
+    rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
   padding: var(--paper-note-top-padding) var(--line-sides-padding)
     var(--line-height)
     calc(var(--paper-note-left-padding) + var(--line-sides-padding));
   line-height: var(--line-height);
   text-align: left;
-  border-radius: 5px;
-  margin: 30px;
+  border-radius: 2px;
+  margin: 40px;
 }
 
 .sub-text {
