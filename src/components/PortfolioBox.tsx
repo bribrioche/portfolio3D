@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Vector2, Raycaster } from "three";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Vector2, Raycaster, PerspectiveCamera } from "three";
 import BoxModel from "./BoxModel";
 import Intercalary from "./Intercalary";
 import PaperComponent from "./PaperComponent";
@@ -17,6 +17,8 @@ backgroundMusic.volume = 0.5;
 const woosh = new Audio(require("../assets/sounds/woosh.mp3"));
 
 const PortfolioBox: React.FC = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  const [coef, setCoef] = useState(1);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [clickedIndex, setClickedIndex] = useState<number | null>(null);
   const [isOverlayActive, setIsOverlayActive] = useState(false); // Nouvel état
@@ -24,25 +26,17 @@ const PortfolioBox: React.FC = () => {
     setIsOverlayActive(false);
     setClickedIndex(null);
   };
+
   const RaycastManager: React.FC = () => {
     const raycaster = useRef(new Raycaster());
     const mouse = useRef(new Vector2());
-  
+
     const handleMouseMove = (event: MouseEvent) => {
       if (isOverlayActive) return; // Désactiver les mouvements si l'overlay est actif
       mouse.current.x = (event.clientX / window.innerWidth) * 2 - 1;
       mouse.current.y = -(event.clientY / window.innerHeight) * 2 + 1;
     };
-  
-    const handleTouchMove = (event: TouchEvent) => {
-      if (isOverlayActive) return; // Désactiver les mouvements si l'overlay est actif
-      const touch = event.touches[0]; // Prendre le premier point de contact
-      mouse.current.x = (touch.clientX / window.innerWidth) * 2 - 1;
-      mouse.current.y = -(touch.clientY / window.innerHeight) * 2 + 1;
-      setClickedIndex(hoveredIndex);
 
-    };
-  
     const handleClick = (event: MouseEvent | TouchEvent) => {
       if (isOverlayActive) return; // Désactiver les clics si l'overlay est actif
       if (hoveredIndex !== null) {
@@ -51,14 +45,16 @@ const PortfolioBox: React.FC = () => {
         setClickedIndex(hoveredIndex);
       }
     };
-  
-    
+
     useFrame(({ camera, scene }) => {
       if (isOverlayActive) return; // Désactiver le raycast si l'overlay est actif
-  
+
       raycaster.current.setFromCamera(mouse.current, camera);
-      const intersects = raycaster.current.intersectObjects(scene.children, true);
-  
+      const intersects = raycaster.current.intersectObjects(
+        scene.children,
+        true
+      );
+
       if (intersects.length > 0) {
         const target = intersects[0].object;
         if (target.name === "casier") {
@@ -73,21 +69,56 @@ const PortfolioBox: React.FC = () => {
         document.body.style.cursor = "default";
       }
     });
-  
+
+    useEffect(() => {
+      const checkMobile = () => {
+        // Définir la largeur maximale des écrans mobiles
+        setIsMobile(window.innerHeight <= 768); // Vous pouvez ajuster cette valeur selon vos besoins
+        console.log("isMobile", isMobile);
+
+        if (isMobile) {
+          setCoef(0.7);
+        } else {
+          setCoef(1);
+        }
+        console.log("coef", coef);
+      };
+
+      checkMobile(); // Vérifie dès le début
+      window.addEventListener("resize", checkMobile); // Vérifie à chaque redimensionnement de la fenêtre
+
+      return () => {
+        window.removeEventListener("resize", checkMobile);
+      };
+    }, []);
+
     useEffect(() => {
       window.addEventListener("mousemove", handleMouseMove);
       window.addEventListener("click", handleClick);
-      window.addEventListener("touchmove", handleTouchMove, { passive: true });
       window.addEventListener("touchstart", handleClick, { passive: true });
-  
+
       return () => {
         window.removeEventListener("mousemove", handleMouseMove);
         window.removeEventListener("click", handleClick);
-        window.removeEventListener("touchmove", handleTouchMove);
         window.removeEventListener("touchstart", handleClick);
       };
     }, [hoveredIndex, isOverlayActive]);
-  
+
+    return null;
+  };
+
+  // Utilisation du hook useThree pour accéder à la caméra
+  const CameraAdjuster: React.FC<{ coef: number }> = ({ coef }) => {
+    const { camera } = useThree();
+
+    useEffect(() => {
+      if (camera instanceof PerspectiveCamera) {
+        // Vérifie si c'est bien une PerspectiveCamera
+        camera.fov = 19 * coef; // Applique le coefficient au FOV
+        camera.updateProjectionMatrix(); // Met à jour la matrice de projection après modification
+      }
+    }, [coef, camera]);
+
     return null;
   };
 
@@ -144,8 +175,9 @@ const PortfolioBox: React.FC = () => {
       )}
       <Canvas
         style={{ width: "100%", height: "100vh" }}
-        camera={{ fov: 19, position: [0.7, 1, 2.7] }}
+        camera={{ fov: 19 * coef, position: [0.7, 1, 2.7] }}
       >
+        <CameraAdjuster coef={coef} />
         <RaycastManager />
         <BoxModel position={[0, -0.2, 0]}>
           {[
