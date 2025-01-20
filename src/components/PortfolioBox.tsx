@@ -31,19 +31,15 @@ const PortfolioBox: React.FC = () => {
     const raycaster = useRef(new Raycaster());
     const mouse = useRef(new Vector2());
 
+    const handleOverlayClose = () => {
+      setIsOverlayActive(false);
+      setClickedIndex(null);
+    };
+
     const handleMouseMove = (event: MouseEvent) => {
       if (isOverlayActive) return; // Désactiver les mouvements si l'overlay est actif
       mouse.current.x = (event.clientX / window.innerWidth) * 2 - 1;
       mouse.current.y = -(event.clientY / window.innerHeight) * 2 + 1;
-    };
-
-    const handleClick = (event: MouseEvent | TouchEvent) => {
-      if (isOverlayActive) return; // Désactiver les clics si l'overlay est actif
-      if (hoveredIndex !== null) {
-        woosh.volume = 0.05;
-        woosh.play();
-        setClickedIndex(hoveredIndex);
-      }
     };
 
     useFrame(({ camera, scene }) => {
@@ -70,27 +66,76 @@ const PortfolioBox: React.FC = () => {
       }
     });
 
+    // Détection et mise à jour de l'état de l'appareil
     useEffect(() => {
       const checkMobile = () => {
-        // Définir la largeur maximale des écrans mobiles
-        setIsMobile(window.innerHeight <= 768); // Vous pouvez ajuster cette valeur selon vos besoins
-        console.log("isMobile", isMobile);
-
-        if (isMobile) {
-          setCoef(0.7);
-        } else {
-          setCoef(1);
-        }
-        console.log("coef", coef);
+        setIsMobile(window.innerWidth <= 768);
+        setCoef(window.innerWidth <= 768 ? 0.7 : 1);
       };
 
-      checkMobile(); // Vérifie dès le début
-      window.addEventListener("resize", checkMobile); // Vérifie à chaque redimensionnement de la fenêtre
+      checkMobile();
+      window.addEventListener("resize", checkMobile);
 
       return () => {
         window.removeEventListener("resize", checkMobile);
       };
     }, []);
+    const camera = useThree().camera;
+    const scene = useThree().scene;
+    // Gestion du clic (mobile ou desktop)
+    const handleClick = (event: MouseEvent | TouchEvent) => {
+      if (isOverlayActive) return;
+
+      // Position du clic/touch
+      const clientX =
+        "touches" in event ? event.touches[0].clientX : event.clientX;
+      const clientY =
+        "touches" in event ? event.touches[0].clientY : event.clientY;
+
+      mouse.current.x = (clientX / window.innerWidth) * 2 - 1;
+      mouse.current.y = -(clientY / window.innerHeight) * 2 + 1;
+
+      // Détection de l'objet cliqué
+
+      raycaster.current.setFromCamera(mouse.current, camera);
+      const intersects = raycaster.current.intersectObjects(
+        scene.children,
+        true
+      );
+
+      if (intersects.length > 0) {
+        const target = intersects[0].object;
+        if (target.userData.index !== undefined) {
+          woosh.volume = 0.05;
+          woosh.play();
+          setClickedIndex(target.userData.index);
+        }
+      }
+    };
+
+    useFrame(({ camera, scene }) => {
+      if (isOverlayActive) return;
+
+      raycaster.current.setFromCamera(mouse.current, camera);
+      const intersects = raycaster.current.intersectObjects(
+        scene.children,
+        true
+      );
+
+      if (intersects.length > 0) {
+        const target = intersects[0].object;
+        if (target.name === "casier") {
+          setHoveredIndex(null);
+          document.body.style.cursor = "default";
+        } else if (target.userData.index !== undefined) {
+          setHoveredIndex(target.userData.index);
+          document.body.style.cursor = "pointer";
+        }
+      } else {
+        setHoveredIndex(null);
+        document.body.style.cursor = "default";
+      }
+    });
 
     useEffect(() => {
       window.addEventListener("mousemove", handleMouseMove);
@@ -102,7 +147,7 @@ const PortfolioBox: React.FC = () => {
         window.removeEventListener("click", handleClick);
         window.removeEventListener("touchstart", handleClick);
       };
-    }, [hoveredIndex, isOverlayActive]);
+    }, [isOverlayActive, hoveredIndex]);
 
     return null;
   };
