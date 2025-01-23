@@ -37,25 +37,6 @@
   border-radius: 15px;
 }
 
-@media (max-width: 1279px) {
-  .pages {
-    height: calc(80vw * 2 / 3); /* Assure le ratio 2:3 basé sur la largeur */
-    width: 70vw; /* Utilise toute la largeur de l'écran */
-    max-width: 90vw; /* Empêche la largeur de dépasser 90% de l'écran */
-  }
-}
-
-@media (max-width: 768px) {
-  .pages {
-    height: calc(90vw * 2 / 3); /* Assure le ratio 2:3 basé sur la largeur */
-    width: 70vw; /* Utilise toute la largeur de l'écran */
-    max-width: 65vw; /* Empêche la largeur de dépasser 90% de l'écran */
-  }
-}
-
-@media (max-width: 480px) {
-}
-
 .page {
   height: 100%;
   width: 100%;
@@ -154,5 +135,90 @@ svg {
   height: 40px;
 }
 
-/* .techno-title {
-} */
+@media (max-height: 1279px) {
+  .overlay-tab-4 {
+    padding: 5px 30px;
+    font-size: 20px;
+  }
+
+  .content4 {
+    flex-direction: column;
+    padding-inline: 15px;
+    flex-wrap: inherit;
+    justify-content: space-evenly;
+    align-items: center;
+    overflow: scroll;
+    gap: 0px;
+  }
+
+  .pages {
+    height: calc(80vw * 2 / 3); /* Assure le ratio 2:3 basé sur la largeur */
+    width: 70vw; /* Utilise toute la largeur de l'écran */
+    max-width: 90vw; /* Empêche la largeur de dépasser 90% de l'écran */
+    overflow: scroll;
+  }
+}
+
+@media (max-height: 768px) {
+  .pages {
+    height: calc(90vw * 2 / 3); /* Assure le ratio 2:3 basé sur la largeur */
+    width: 70vw; /* Utilise toute la largeur de l'écran */
+    max-width: 65vw; /* Empêche la largeur de dépasser 90% de l'écran */
+  }
+
+  .pages {
+    height: calc(80vw * 2 / 3); /* Assure le ratio 2:3 basé sur la largeur */
+    width: 70vw; /* Utilise toute la largeur de l'écran */
+    max-width: 90vw; /* Empêche la largeur de dépasser 90% de l'écran */
+  }
+
+  .title {
+    font-size: 10px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: 0px;
+  }
+
+  .images {
+    width: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .description {
+    font-size: 9px;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
+  .techno {
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 5px;
+    font-size: 12px;
+  }
+
+  .techno-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  button {
+    margin-inline: 5px;
+  }
+
+  svg {
+    width: 15px;
+    height: 15px;
+  }
+}

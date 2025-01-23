@@ -62,23 +62,27 @@ const TiltCard = ({
         transformStyle: "preserve-3d",
         transform,
       }}
-      className="relative h-96 w-72 rounded-xl "
+      className="relative h-96 w-72 rounded-xl w-600 "
     >
       <div
         style={{
           transform: "translateZ(20px)",
           transformStyle: "preserve-3d",
-          width: "100%",
-          height: "100%",
           transition: "all 0.5s",
           backgroundImage: image ? `url(${image})` : undefined,
           backgroundSize: "auto",
           backgroundPosition: "center",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
           //   filter: "blur(10px)", // Flou uniquement sur l'image
         }}
         className="absolute inset-4 place-content-center rounded-xl bg-slate-50/70 shadow-md hover:shadow-2xl "
       >
-        <h1 className="text-center text-4xl font-bold text-black ">{title}</h1>
+        <h1 className="text-center text-2xl font-bold text-black pb-7">
+          {title}
+        </h1>
         <br />
         {subtitle && (
           <p className="text-center text-2xl font-semibold text-black">
